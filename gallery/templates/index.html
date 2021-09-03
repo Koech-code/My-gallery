@@ -2,6 +2,23 @@
 
 {% block content%}
 {{block.super}}
-
+<div class="container">
+   <div class="row">     
+       {% for image in images %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{image.image.url}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{image.img_name}}</h5>
+                    <p class="card-text">{{image.description}}</p>
+                    <p class="card-text">{{image.image_location}}</p>
+                    <p class="card-text">{{image.image_category}}</p>
+                    <a href="#" class="btn btn-primary">copy</a>
+                </div>
+            </div>
+       {% endfor%}
+   </div>
+</div>
+<br>
+<br>
 {% endblock%}
 
