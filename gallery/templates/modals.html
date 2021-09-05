@@ -1,0 +1,40 @@
+<div class="modal" id="expand{{image.id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><span style="color: skyblue;">{{image.img_name}}</span> photo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img src="{{image.image.url}}" alt="" style="height: 20rem; width: 30rem;">
+            <br>
+            <br>
+            <h5 class="card-title">{{image.img_name}} </h5>
+            <p class="card-text"><span style="color: #f8961e;">Description</span> {{image.description}} </p>
+            <p class="card-text">Where taken: <span style="color: #006d77;">{{image.image_location}}</span> </p>
+            <p class="card-text">Category: {{image.image_category}} </p>
+        </div>
+        <div class="modal-footer">
+            <input class="form-control input-lg" type="text" value="{{image.image.url}}"
+                      id="copy">
+                  <button class="btn btn-success btn-sm"
+                      onclick="copyLink('{{image.id}}.url')">Copy</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+     function copyLink() {
+    /* Get the text field */
+    var copyText = document.getElementById("copy");
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+    alert("Successfully copied Image link!");
+}
+  </script>
