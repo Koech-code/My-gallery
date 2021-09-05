@@ -3,19 +3,20 @@
 {% block content%}
 {{block.super}}
 <div class="container">
-   <div class="row">     
-       {% for image in images %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{image.image.url}}">
+   <div class="row">   
+        {% for image in images %}
+        <div class="col-md-3">
+            <div class="card" style="width: 20rem; height: 18em;">
+                <img src="{{image.image.url}}" class="img-responsive" data-bs-toggle="modal" data-bs-target="#expand{{image.id}}" alt="">
                 <div class="card-body">
-                    <h5 class="card-title">{{image.img_name}}</h5>
-                    <p class="card-text">{{image.description}}</p>
-                    <p class="card-text">{{image.image_location}}</p>
-                    <p class="card-text">{{image.image_category}}</p>
-                    <a href="#" class="btn btn-primary">copy</a>
-                </div>
+                    <h5 class="card-title">{{image.img_name}}</h5>   
+                </div>    
             </div>
-       {% endfor%}
+            <hr>
+        </div>
+        
+        {% include 'modals.html' %} 
+        {% endfor%}     
    </div>
 </div>
 <br>
