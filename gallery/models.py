@@ -27,10 +27,26 @@ class Image(models.Model):
     image_category=models.ForeignKey(Category, on_delete=CASCADE)
     image_location=models.ForeignKey(Location, on_delete=CASCADE)
 
+    
+    @classmethod
+    def search_by_category(cls, search_word):
+        images=cls.objects.filter(image_category__Categories__icontains=search_word)
+        return images
+    
+    @classmethod
+    def filter_by_location(cls, search_location):
+        location=Image.objects.filter(image_location__place=search_location)
+        return location
+
+
+
+    def __str__(self):
+        return self.img_name
 
     def save_image(self):
         self.save()
 
     def delete_image(self):
         self.delete()
+    
     
