@@ -6,13 +6,13 @@ from django.test import TestCase
 class ImageTestClass(TestCase):
     # Set up method
     def setUp(self):
-        self.category=Category()
-        self.category.save_category()
+        self.image_category=Category(Categories='food')
+        self.image_category.save_category()
 
-        self.location=Location()
-        self.location.save_location()
+        self.image_location=Location(place='Gelegele')
+        self.image_location.save_location()
 
-        self.image=Image(id=1, img_name='hyke1', description='a picture of our first hyke', location=self.location, category=self.category)
+        self.image=Image(id=1, img_name='hyke1', description='a picture of our first hyke', image_location=self.image_location, image_category=self.image_category)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.image, Image))
@@ -25,6 +25,6 @@ class ImageTestClass(TestCase):
     def test_delete_image(self):
         self.image.delete_image()
         deleted=Image.objects.all()
-        self.assertTrue(len(deleted) > 0) 
+        self.assertTrue(len(deleted) == 0) 
 
     
